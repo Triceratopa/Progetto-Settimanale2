@@ -1,7 +1,9 @@
 package org.example;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Archivio {
     //aggiungere un elemento che viene di conseguenza salvato in una lista
@@ -17,7 +19,7 @@ public class Archivio {
         }
 
     }
-    public Catalogo ricercaElemento(String isbn) throws ElementoNonTrovatoException {
+    public Catalogo ricercaElemento(String isbn) throws ElementoNonTrovatoException { //string isbn è il parametro che il metodo deve avere
       for (Catalogo elemento : archivio) {
           if (elemento.getIsbn().equals(isbn)) {
               return elemento;
@@ -25,4 +27,20 @@ public class Archivio {
       }
         throw new ElementoNonTrovatoException ("Elemento non trovato");
     }
+    public boolean rimuoviElemento(String isbn) throws ElementoNonTrovatoException {
+        return archivio.removeIf(catalogo -> catalogo.getIsbn().equals(isbn));
+    }
+    public List<Catalogo> ricercaAnnoPubblicazione(int anno) {
+        return archivio .stream().filter(p -> p.getAnnoPubblicazione() == anno).toList();
+    }
+    public List<Catalogo> ricercaPerAutore (String autore){
+        return archivio .stream()
+                .filter(p -> p instanceof Libri && ((Libri) p).getAutore().toLowerCase().contains(autore.toLowerCase()))
+                .collect(Collectors.toList());
+
+  }
+
+
+
+
 }
