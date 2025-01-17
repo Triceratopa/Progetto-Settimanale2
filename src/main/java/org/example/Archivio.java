@@ -40,7 +40,8 @@ public class Archivio {
 
   }
 
-
-
-
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

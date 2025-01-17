@@ -11,7 +11,7 @@ public  class Catalogo {
         this.isbn = isbn;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
-        this.numeroPagine = annoPubblicazione;
+        this.numeroPagine = numeroPagine;
     }
     //creo i metodi SET e GET che verranno utilizzati nelle classi figlie
     public String getIsbn() {
